@@ -6,16 +6,14 @@ function Plugin(messenger, options){
   return this;
 }
 
-Plugin.getOptionsSchema = function(){
-  return {
-    'type': 'object',
-    'properties': {
-      'greetingPrefix': {
-        'type': 'string',
-        'required': true
-      }
+var optionsSchema = {
+  'type': 'object',
+  'properties': {
+    'greetingPrefix': {
+      'type': 'string',
+      'required': true
     }
-  };
+  }
 };
 
 Plugin.prototype.onMessage = function(data){
@@ -32,4 +30,8 @@ Plugin.prototype.destroy = function(){
 };
 
 
-module.exports = Plugin;
+module.exports = {
+  Plugin: Plugin,
+  optionsSchema: optionsSchema
+
+};
