@@ -5,6 +5,7 @@
   "keywords": [
     "skynet-plugin"
   ],
+  "repository": "git@github.com:monteslu/skynet-greeting.git",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
