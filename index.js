@@ -16,10 +16,20 @@ var optionsSchema = {
   }
 };
 
+var messageSchema = {
+  'type': 'object',
+  'properties': {
+    'text': {
+      'type': 'string',
+      'required': true
+    }
+  }
+};
+
 Plugin.prototype.onMessage = function(data){
   console.log(this.options.greetingPrefix + ', ' + data.fromUuid);
   if(data.fromUuid){
-    this.messenger.send({devices: data.fromUuid, message: {greeting: this.options.greetingPrefix + ' back atcha'}});
+    this.messenger.send({devices: data.fromUuid, message: {greeting: this.options.greetingPrefix + ' back atcha: ' + data.text}});
   }
 
 };
@@ -32,6 +42,6 @@ Plugin.prototype.destroy = function(){
 
 module.exports = {
   Plugin: Plugin,
-  optionsSchema: optionsSchema
-
+  optionsSchema: optionsSchema,
+  messageSchema: messageSchema
 };
