@@ -26,11 +26,17 @@ var messageSchema = {
   }
 };
 
-Plugin.prototype.onMessage = function(message){
+Plugin.prototype.onMessage = function(message, fn){
   var data = message.message || message.payload;
   console.log(this.options.greetingPrefix + ', ' + message.fromUuid);
-  if(message.fromUuid){
-    this.messenger.send({devices: message.fromUuid, message: {greeting: this.options.greetingPrefix + ' back atcha: ' + data.text}});
+
+  var resp = {greeting: this.options.greetingPrefix + ' back atcha: ' + data.text};
+
+  if(message.fromUuid && fn){
+    resp.withCallback = true;
+    fn(null, resp);
+  }else if(message.fromUuid){
+    this.messenger.send({devices: message.fromUuid, payload: resp});
   }
 
 };

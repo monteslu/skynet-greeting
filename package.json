@@ -1,6 +1,6 @@
 {
   "name": "skynet-greeting",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Greeting plugin for Skynet Gateway",
   "keywords": [
     "skynet-plugin"
