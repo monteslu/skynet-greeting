@@ -34,7 +34,7 @@ Plugin.prototype.onMessage = function(message, fn){
 
   if(message.fromUuid && fn){
     resp.withCallback = true;
-    fn(null, resp);
+    fn(resp);
   }else if(message.fromUuid){
     this.messenger.send({devices: message.fromUuid, payload: resp});
   }
